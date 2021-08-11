@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+.header__right{
+    margin-top: 20px;
+    font-weight: bold;
+    flex: 0.4;
+    display: flex;
+    justify-content: space-around
+}
