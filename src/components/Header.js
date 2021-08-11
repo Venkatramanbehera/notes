@@ -8,6 +8,7 @@ import LoginHeader from './LoginHeader'
 import LogoutHeader from './LogoutHeader'
 
 import { isLogin } from '../action/userAction'
+import { getNotes } from '../action/noteAction'
 
 const Header = (props) => {
 
@@ -20,6 +21,7 @@ const Header = (props) => {
     useEffect(() => {
         if(localStorage.getItem('token')){
             dispatch(isLogin(true))
+            dispatch(getNotes())
         }
     },[])
 

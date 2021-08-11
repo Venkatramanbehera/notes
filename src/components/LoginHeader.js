@@ -15,6 +15,7 @@ const LoginHeader = (props) => {
     return (
         <>
             <Link to="/account">Account</Link>
+            <Link to="/mynotes">My Notes</Link>
             <Link to="/logout" onClick={ handleLogout }>Logout</Link>
         </>
     )
