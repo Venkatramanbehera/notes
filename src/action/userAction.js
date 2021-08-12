@@ -33,7 +33,7 @@ export const registerError = (errors) => {
     }
 }
 
-export const login = (formData,resetForm) => {
+export const login = (formData,resetForm,redirectToHome) => {
     return (dispatch) => {
         axios.post('http://dct-user-auth.herokuapp.com/users/login',formData)
             .then((response) => {
@@ -44,6 +44,7 @@ export const login = (formData,resetForm) => {
                     localStorage.setItem('token',data.token)
                     resetForm()
                     dispatch(isLogin(true))
+                    redirectToHome()
                 }
             })
             .catch( (err) => {
@@ -59,7 +60,8 @@ export const isLogin = (bool) => {
     }
 }
 
-export const logout = () => {
+export const logout = (redirectToHome) => {
+    redirectToHome()
     return {
         type : 'LOGOUT'
     }

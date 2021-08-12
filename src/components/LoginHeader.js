@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import { logout } from '../action/userAction'
 
@@ -9,8 +9,12 @@ const LoginHeader = (props) => {
 
     const dispatch = useDispatch()
 
+    const redirectToHome = () => {
+        props.history.push('/home')
+    }
+
     const handleLogout = () => {
-        dispatch(logout())
+        dispatch(logout(redirectToHome))
     }
     return (
         <>
@@ -21,4 +25,6 @@ const LoginHeader = (props) => {
     )
 }
 
-export default LoginHeader
+
+
+export default withRouter(LoginHeader)

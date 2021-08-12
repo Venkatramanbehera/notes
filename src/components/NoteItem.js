@@ -11,13 +11,13 @@ const NoteItem = (props) => {
         dispatch(removeNote(_id))
     }
     return (
-        <Card>
+        <Card style={{ margin:'10px', height:'200px', width:'300px',textAlign:'center'}}>
             <CardContent>
                 <Typography>{ title }</Typography>
                 <Typography>{ body }</Typography>
             </CardContent>
-            <CardActions>
-                <Button variant="contained" color="primary" onClick={ () => handleRemove() }>Remove</Button>
+            <CardActions style={{ margin:'40px'}}>
+                <Button variant="contained" color="secondary" onClick={ () => handleRemove() }>Remove</Button>
             </CardActions>
         </Card>
     )

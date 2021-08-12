@@ -2,3 +2,24 @@
     display: flex;
     justify-content: space-around;
 }
+
+.left{
+    flex: 0.6;
+}
+
+.left > h1 {
+    text-align: center;
+}
+
+.right{
+    flex: 0.4;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 50px;
+}
+
+.right > h1 {
+    text-align: center;
+}

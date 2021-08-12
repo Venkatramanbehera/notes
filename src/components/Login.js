@@ -21,6 +21,10 @@ const Login = (props) => {
         setPassword(e.target.value)
     }
 
+    const redirectToHome = () => {
+        props.history.push('/')
+    }
+
     const submitForm = (e) => {
         e.preventDefault()
         const formData = {
@@ -31,7 +35,7 @@ const Login = (props) => {
             setPassword('')
             setEmail('')
         }
-        dispatch(login(formData,resetForm))
+        dispatch(login(formData,resetForm,redirectToHome))
     }
 
     return (

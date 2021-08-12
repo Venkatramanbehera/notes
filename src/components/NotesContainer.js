@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import NoteItem from './NoteItem'
 
+import '../css/NotesContainer.css'
+
 const NotesContainer = (props) => {
 
     const notes = useSelector((state) => {
@@ -9,8 +11,7 @@ const NotesContainer = (props) => {
     })
 
     return (
-        <div>
-            <h2>Notes Container </h2>
+        <div className="notes__container">
             {
                 notes.map((note) => {
                     return <NoteItem key={note._id} {...note}/>
