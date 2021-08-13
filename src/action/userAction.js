@@ -63,12 +63,6 @@ export const isLogin = (bool) => {
     }
 }
 
-export const logout = (redirectToHome) => {
-    redirectToHome()
-    return {
-        type : 'LOGOUT'
-    }
-}
 
 export const getAccount = () => {
     return (dispatch, getState) => {

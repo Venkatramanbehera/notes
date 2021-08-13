@@ -1,7 +1,7 @@
 import React, { useState }  from 'react'
 
 import { Button, TextField, ButtonGroup } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, /*useSelector*/ } from 'react-redux'
 
 import { postData } from '../action/userAction'
 
@@ -46,9 +46,9 @@ const Register = (props) => {
         dispatch(postData(formData,resetForm,redirectToLogin))
     }
 
-    const userIsRegister = useSelector((state) => {
-        return state.user.isRegister
-    })
+    // const userIsRegister = useSelector((state) => {
+    //     return state.user.isRegister
+    // })
 
     return (
         <div className="register">

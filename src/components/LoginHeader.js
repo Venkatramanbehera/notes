@@ -2,19 +2,19 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 
 import { Link, withRouter } from 'react-router-dom'
+import { removeStateNotes } from '../action/noteAction'
 
-import { logout } from '../action/userAction'
+import { isLogin } from '../action/userAction'
 
 const LoginHeader = (props) => {
 
     const dispatch = useDispatch()
 
-    const redirectToHome = () => {
-        props.history.push('/')
-    }
-
     const handleLogout = () => {
-        dispatch(logout(redirectToHome))
+        localStorage.removeItem('token')
+        props.history.push('/')
+        dispatch(isLogin(false))
+        dispatch(removeStateNotes())
     }
     return (
         <>

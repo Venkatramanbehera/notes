@@ -13,6 +13,9 @@ const noteReducer = (state = initialNotesState, action) => {
                 return data._id !== action.payload._id
             })
         }
+        case 'REMOVE_STATE_NOTES':{
+            return initialNotesState
+        }
         default : 
             return [...state]
     }

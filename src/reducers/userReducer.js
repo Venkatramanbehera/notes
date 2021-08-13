@@ -19,10 +19,7 @@ const userReducer = (state = initialUserState, action) => {
         case 'USER_ACCOUNT' : {
             return { ...state, userDetails: action.payload}
         }
-        case 'LOGOUT' : {
-            localStorage.removeItem('token')
-            return { ...state, isLogin : false }
-        }
+       
         default :
             return {...state}
     }

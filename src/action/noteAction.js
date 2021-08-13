@@ -69,3 +69,9 @@ export const deleteNote = (data) => {
         payload : data
     }
 }
+
+export const removeStateNotes = () => {
+    return {
+        type : 'REMOVE_STATE_NOTES'
+    }
+}
