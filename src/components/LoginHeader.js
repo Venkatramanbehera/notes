@@ -10,7 +10,7 @@ const LoginHeader = (props) => {
     const dispatch = useDispatch()
 
     const redirectToHome = () => {
-        props.history.push('/home')
+        props.history.push('/')
     }
 
     const handleLogout = () => {
@@ -20,7 +20,7 @@ const LoginHeader = (props) => {
         <>
             <Link to="/account">Account</Link>
             <Link to="/mynotes">My Notes</Link>
-            <Link to="/logout" onClick={ handleLogout }>Logout</Link>
+            <Link to="#" onClick={ handleLogout }>Logout</Link>
         </>
     )
 }

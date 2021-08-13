@@ -1,4 +1,5 @@
 import axios from "axios"
+import { getNotes } from "./noteAction"
 
 export const postData = (formData,resetForm,redirectToLogin) => {
     return (dispatch) => {
@@ -44,6 +45,8 @@ export const login = (formData,resetForm,redirectToHome) => {
                     localStorage.setItem('token',data.token)
                     resetForm()
                     dispatch(isLogin(true))
+                    dispatch(getNotes())
+                    dispatch(getAccount())
                     redirectToHome()
                 }
             })

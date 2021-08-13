@@ -1,20 +1,12 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
 
-import { getAccount } from '../action/userAction'
 
 const Account = (props) => {
-    const dispatch = useDispatch()
-
-    const [ isLogin, userDetails ] = useSelector((state) => {
-        return [state.user.isLogin, state.user.userDetails]
+    
+    const userDetails = useSelector((state) => {
+        return state.user.userDetails
     })
-
-    useEffect(() => {
-        dispatch(getAccount())
-    },[isLogin])
-
 
     return (
         <div>

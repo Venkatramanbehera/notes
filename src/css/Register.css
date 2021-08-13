@@ -1,0 +1,7 @@
+.register{
+    text-align: center;
+}
+
+.form__username, .form__email, .form__password {
+    margin-bottom: 20px;
+}

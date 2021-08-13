@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux'
 
 import { login } from '../action/userAction'
 
+import '../css/Login.css'
+
 const Login = (props) => {
 
     const dispatch = useDispatch()
@@ -21,15 +23,15 @@ const Login = (props) => {
         setPassword(e.target.value)
     }
 
-    const redirectToHome = () => {
-        props.history.push('/')
-    }
-
+    
     const submitForm = (e) => {
         e.preventDefault()
         const formData = {
             email:email,
             password:password
+        }
+        const redirectToHome = () => {
+            props.history.push('/')
         }
         const resetForm = () => {
             setPassword('')
@@ -39,7 +41,7 @@ const Login = (props) => {
     }
 
     return (
-        <div>
+        <div className="login">
             <h1>Login To Your Account </h1>
             <div className="form__login">
                 <form onSubmit={ submitForm }>
@@ -47,6 +49,7 @@ const Login = (props) => {
                         <TextField 
                             id="outlined-basic" 
                             label="Your Email" 
+                            style={{ width:'400px'}}
                             variant="outlined" 
                             value={ email } 
                             onChange={ handleEmailChange } />
@@ -56,6 +59,7 @@ const Login = (props) => {
                             id="outlined-basic" 
                             label="Password" 
                             variant="outlined" 
+                            style={{ width:'400px'}}
                             value={ password } 
                             onChange={ handlePasswordChange}/>
                     </div>

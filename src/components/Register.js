@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { postData } from '../action/userAction'
 
+import '../css/Register.css'
+
 const Register = (props) => {
 
     const dispatch = useDispatch() 
@@ -49,12 +51,12 @@ const Register = (props) => {
     })
 
     return (
-        <div>
-            <div>
+        <div className="register">
+            {/* <div>
                 {
                     userIsRegister && <div><h1> user Register Successfully </h1>{  } </div>
                 }
-            </div>
+            </div> */}
             <h1>Register With Us</h1>
 
             <div className="form" autoComplete="off">
@@ -62,7 +64,9 @@ const Register = (props) => {
                     <div className="form__username">
                         <TextField 
                             id="outlined-basic" 
+                            style={{ width:'400px'}}
                             label="Enter User Name" 
+                            type = "text"
                             variant="outlined" 
                             value={username} 
                             onChange={ handleUsername } /> 
@@ -71,6 +75,8 @@ const Register = (props) => {
                         <TextField 
                             id="outlined-basic" 
                             label="Enter Email" 
+                            type = "email"
+                            style={{ width:'400px'}}
                             variant="outlined" 
                             value = {email} 
                             onChange={ handleEmail} />
@@ -79,12 +85,16 @@ const Register = (props) => {
                         <TextField 
                             id="outlined-basic" 
                             label="Enter Password" 
+                            type="password"
+                            style={{ width:'400px'}}
                             variant="outlined" 
                             value={password}
                             onChange={ handlePassword} />
                     </div>
                     <div className="form__button">
-                        <ButtonGroup color="primary" aria-label="outlined primary button group">
+                        <ButtonGroup 
+                            color="primary" 
+                            aria-label="outlined primary button group">
                             <Button type="submit">Register</Button>
                             <Button>Cancel</Button>
                         </ButtonGroup>
