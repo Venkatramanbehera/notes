@@ -46,6 +46,10 @@ const Register = (props) => {
         dispatch(postData(formData,resetForm,redirectToLogin))
     }
 
+    const handleCancel = () => {
+        props.history.push('/')
+    }
+
     // const userIsRegister = useSelector((state) => {
     //     return state.user.isRegister
     // })
@@ -93,7 +97,7 @@ const Register = (props) => {
                             color="primary" 
                             aria-label="outlined primary button group">
                             <Button type="submit">Register</Button>
-                            <Button>Cancel</Button>
+                            <Button onClick={ handleCancel }>Cancel</Button>
                         </ButtonGroup>
                     </div>
                 </form>

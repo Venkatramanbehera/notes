@@ -40,6 +40,10 @@ const Login = (props) => {
         dispatch(login(formData,resetForm,redirectToHome))
     }
 
+    const handleCancel = () => {
+        props.history.push('/')
+    }
+
     return (
         <div className="login">
             <h1>Login To Your Account </h1>
@@ -66,7 +70,7 @@ const Login = (props) => {
                     <div className="button__group">
                         <ButtonGroup color="primary" aria-label="outlined primary button group">
                             <Button type="submit">Login</Button>
-                            <Button>Cancel</Button>
+                            <Button onClick={ handleCancel }>Cancel</Button>
                         </ButtonGroup>
                     </div>
                 </form>

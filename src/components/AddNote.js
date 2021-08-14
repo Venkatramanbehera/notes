@@ -38,7 +38,7 @@ const AddNote = (props) => {
             <form onSubmit={ handleSubmit }>
                 <div className="form__title">
                     <TextField 
-                        style={{ width:'400px',marginBottom:'20px'}}
+                        style={{ width:'300px',marginBottom:'20px'}}
                         label="Title" 
                         variant="outlined" 
                         value={ title }
@@ -47,7 +47,7 @@ const AddNote = (props) => {
                 </div>
                 <div className="form__textarea">
                     <TextareaAutosize
-                        style={{ width:'390px', marginBottom:'20px'}}
+                        style={{ width:'290px', marginBottom:'20px'}}
                         minRows={6}
                         placeholder="Body"
                         value={ body }
@@ -58,7 +58,7 @@ const AddNote = (props) => {
                     <Button 
                         variant="contained" 
                         color="primary" 
-                        style={{ width:'200px', marginLeft:'80px'}}
+                        style={{ width:'200px'}}
                         type="submit">Save</Button>
                 </div>
             </form>

@@ -1,6 +1,7 @@
 import React from 'react'
 import {  useSelector } from 'react-redux'
 
+import '../css/Account.css'
 
 const Account = (props) => {
     
@@ -9,9 +10,9 @@ const Account = (props) => {
     })
 
     return (
-        <div>
-            <h2>name - {userDetails.username}</h2>
-            <h3>email- {userDetails.email} </h3>
+        <div className="account">
+            <h2>Name - {userDetails.username}</h2>
+            <h3>Email- {userDetails.email} </h3>
         </div>
     )
 }
