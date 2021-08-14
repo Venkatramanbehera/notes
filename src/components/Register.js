@@ -63,7 +63,6 @@ const Register = (props) => {
                 <form onSubmit={ handleSubmit }>
                     <div className="form__username">
                         <TextField 
-                            id="outlined-basic" 
                             style={{ width:'400px'}}
                             label="Enter User Name" 
                             type = "text"
@@ -73,7 +72,6 @@ const Register = (props) => {
                     </div>
                     <div className="form__email">
                         <TextField 
-                            id="outlined-basic" 
                             label="Enter Email" 
                             type = "email"
                             style={{ width:'400px'}}
@@ -83,7 +81,6 @@ const Register = (props) => {
                     </div>
                     <div className="form__password">
                         <TextField 
-                            id="outlined-basic" 
                             label="Enter Password" 
                             type="password"
                             style={{ width:'400px'}}

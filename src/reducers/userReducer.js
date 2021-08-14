@@ -19,7 +19,6 @@ const userReducer = (state = initialUserState, action) => {
         case 'USER_ACCOUNT' : {
             return { ...state, userDetails: action.payload}
         }
-       
         default :
             return {...state}
     }

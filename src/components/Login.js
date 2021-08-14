@@ -47,18 +47,18 @@ const Login = (props) => {
                 <form onSubmit={ submitForm }>
                     <div className="email">
                         <TextField 
-                            id="outlined-basic" 
                             label="Your Email" 
                             style={{ width:'400px'}}
                             variant="outlined" 
+                            type = "text"
                             value={ email } 
                             onChange={ handleEmailChange } />
                     </div>
                     <div className="password">
                         <TextField 
-                            id="outlined-basic" 
                             label="Password" 
                             variant="outlined" 
+                            type = "password"
                             style={{ width:'400px'}}
                             value={ password } 
                             onChange={ handlePasswordChange}/>
