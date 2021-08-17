@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const addNewNotes = (formData,formReset) => {
+export const asyncAddNotes = (formData,formReset) => {
     return (dispatch, getState) => {
         axios.post('http://dct-user-auth.herokuapp.com/api/notes', formData, 
         {
@@ -26,7 +26,7 @@ export const addNote = (data) => {
     }
 }
 
-export const getNotes = () => {
+export const asyncGetNotes = () => {
     return (dispatch) => {
         axios.get('http://dct-user-auth.herokuapp.com/api/notes',{
             headers : {
@@ -73,5 +73,29 @@ export const deleteNote = (data) => {
 export const removeStateNotes = () => {
     return {
         type : 'REMOVE_STATE_NOTES'
+    }
+}
+
+export const asyncUpdateNote = (formData,_id,toggleEdit) => {
+    return (dispatch) => {
+        axios.put(`http://dct-user-auth.herokuapp.com/api/notes/${_id}`,formData, {
+            headers : {
+                'x-auth' : localStorage.getItem('token')
+            }
+        })
+        .then((res) => {
+            dispatch(update(res.data))
+            toggleEdit()
+        })
+        .catch((err) => {
+            alert(err.message)
+        })
+    }
+}
+
+export const update = (data) => {
+    return {
+        type : "UPDATE",
+        payload : data
     }
 }

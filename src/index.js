@@ -5,8 +5,8 @@ import App from './App'
 import configureStore from './store/configureStore';
 
 import { Provider } from 'react-redux';
-import { getAccount, isLogin } from './action/userAction';
-import { getNotes } from './action/noteAction';
+import { asyncgetAccount, isLogin } from './action/userAction';
+import { asyncGetNotes } from './action/noteAction';
 
 const store = configureStore()
 console.log(store.getState());
@@ -17,8 +17,8 @@ store.subscribe(() => {
 
 if(localStorage.getItem('token')){
     store.dispatch(isLogin(true))
-    store.dispatch(getNotes())
-    store.dispatch(getAccount())
+    store.dispatch(asyncGetNotes())
+    store.dispatch(asyncgetAccount())
 }
 
 

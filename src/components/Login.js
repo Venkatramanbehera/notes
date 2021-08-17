@@ -2,13 +2,17 @@ import React from 'react'
 
 import { TextField, ButtonGroup,Button } from '@material-ui/core'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { asynclogin } from '../action/userAction'
 
 import '../css/Login.css'
 
 const Login = (props) => {
+
+    const error = useSelector((state) => {
+        return state.user.error
+    })
 
     const dispatch = useDispatch()
 
@@ -51,21 +55,25 @@ const Login = (props) => {
                 <form onSubmit={ submitForm }>
                     <div className="email">
                         <TextField 
+                            error = { typeof error === 'string' ? true : false}
                             label="Your Email" 
                             style={{ width:'400px'}}
                             variant="outlined" 
                             type = "text"
                             value={ email } 
-                            onChange={ handleEmailChange } />
+                            onChange={ handleEmailChange } 
+                            helperText = { typeof error === 'string' ? error : '' } />
                     </div>
                     <div className="password">
                         <TextField 
+                            error = { typeof error === 'string' ? true : false}
                             label="Password" 
                             variant="outlined" 
                             type = "password"
                             style={{ width:'400px'}}
                             value={ password } 
-                            onChange={ handlePasswordChange}/>
+                            onChange={ handlePasswordChange}
+                            helperText = { typeof error === 'string' ? error : '' }/>
                     </div>
                     <div className="button__group">
                         <ButtonGroup color="primary" aria-label="outlined primary button group">

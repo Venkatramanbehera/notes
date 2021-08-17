@@ -1,13 +1,20 @@
 import React, { useState }  from 'react'
 
 import { Button, TextField, ButtonGroup } from '@material-ui/core'
-import { useDispatch, /*useSelector*/ } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { postData } from '../action/userAction'
+import axios from 'axios'
+import swal from 'sweetalert'
+
+import { isRegister, registerError } from '../action/userAction'
 
 import '../css/Register.css'
 
 const Register = (props) => {
+
+    const stateError = useSelector( state => {
+        return state.user.error 
+    })
 
     const dispatch = useDispatch() 
 
@@ -27,9 +34,6 @@ const Register = (props) => {
         setPassword(e.target.value)
     }
 
-    const redirectToLogin = () => {
-        props.history.push('/login')
-    }
 
     const handleSubmit= (e) => {
         e.preventDefault()
@@ -38,59 +42,76 @@ const Register = (props) => {
             password : password,
             email : email
         }
+
         const resetForm = () => {
             setPassword('')
             setUserName('')
             setEmail('')
         }
-        dispatch(postData(formData,resetForm,redirectToLogin))
+
+        axios.post('http://dct-user-auth.herokuapp.com/users/register',formData)
+            .then( (response) => {
+                const data = response.data
+                
+                if(data.createdAt){
+                    dispatch(isRegister(true))
+                    resetForm()
+                    swal("Registration Successful!", "plz click the button!", "success")
+                    props.history.push('/login')
+                }else if(data.errors){
+                    dispatch(registerError(data.errors))
+                }
+            })
+            .catch(err => alert(err)) 
     }
 
     const handleCancel = () => {
         props.history.push('/')
     }
 
-    // const userIsRegister = useSelector((state) => {
-    //     return state.user.isRegister
-    // })
 
     return (
         <div className="register">
-            {/* <div>
-                {
-                    userIsRegister && <div><h1> user Register Successfully </h1>{  } </div>
-                }
-            </div> */}
+
             <h1>Register With Us</h1>
 
             <div className="form" autoComplete="off">
                 <form onSubmit={ handleSubmit }>
                     <div className="form__username">
                         <TextField 
+                            error = { stateError.username ? true : false}
                             style={{ width:'400px'}}
                             label="Enter User Name" 
                             type = "text"
                             variant="outlined" 
                             value={username} 
-                            onChange={ handleUsername } /> 
+                            onChange={ handleUsername }
+                            helperText = { stateError.username ? stateError.username.message : '' }
+                             /> 
                     </div>
                     <div className="form__email">
                         <TextField 
+                            error = { stateError.email ? true : false}
                             label="Enter Email" 
                             type = "email"
                             style={{ width:'400px'}}
                             variant="outlined" 
                             value = {email} 
-                            onChange={ handleEmail} />
+                            onChange={ handleEmail}
+                            helperText = { stateError.email ? stateError.email.message : '' }
+                             />
                     </div>
                     <div className="form__password">
                         <TextField 
+                            error = { stateError.password ? true : false}
                             label="Enter Password" 
                             type="password"
                             style={{ width:'400px'}}
                             variant="outlined" 
                             value={password}
-                            onChange={ handlePassword} />
+                            onChange={ handlePassword} 
+                            helperText = { stateError.password ? stateError.password.message : '' }
+                            />
                     </div>
                     <div className="form__button">
                         <ButtonGroup 

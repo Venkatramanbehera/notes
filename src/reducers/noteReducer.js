@@ -16,6 +16,15 @@ const noteReducer = (state = initialNotesState, action) => {
         case 'REMOVE_STATE_NOTES':{
             return initialNotesState
         }
+        case 'UPDATE' : {
+            return state.map((ele) => {
+                if(ele._id === action.payload._id){
+                    return { ...action.payload}
+                }else{
+                    return {...ele}
+                }
+            })
+        }
         default : 
             return [...state]
     }

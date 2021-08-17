@@ -2,16 +2,16 @@ import { TextareaAutosize, TextField, Button } from '@material-ui/core'
 import React, { useState} from 'react'
 import { useDispatch } from 'react-redux'
 
-import { addNewNotes } from '../action/noteAction'
+import { asyncAddNotes, asyncUpdateNote } from '../action/noteAction'
 
 import '../css/AddNotes.css'
 
-const AddNote = (props) => {
+const AddNote = ({toggleEdit,title:editTitle, body:editBody, _id}) => {
 
     const dispatch = useDispatch()
 
-    const [ title, setTitle ] = useState('')
-    const [ body, setBody ] = useState('')
+    const [ title, setTitle ] = useState(editTitle ? editTitle : '')
+    const [ body, setBody ] = useState(editBody ? editBody : '')
 
     const handleChangeTitle = (e) => {
         setTitle(e.target.value)
@@ -30,7 +30,11 @@ const AddNote = (props) => {
             setTitle('')
             setBody('')
         }
-        dispatch(addNewNotes(formData,formReset))
+        if(_id){
+            dispatch(asyncUpdateNote(formData,_id,toggleEdit))
+        }else{
+            dispatch(asyncAddNotes(formData,formReset))
+        }
     }
 
     return (
@@ -58,9 +62,21 @@ const AddNote = (props) => {
                     <Button 
                         variant="contained" 
                         color="primary" 
-                        style={{ width:'200px'}}
-                        type="submit">Save</Button>
+                        style={{ marginRight : '10px'}}
+                        type="submit">Save
+                    </Button>
+                    {
+                    toggleEdit && 
+                        <Button 
+                            variant="contained" 
+                            color="secondary" 
+                            onClick={ () => { toggleEdit() }}
+                            type="submit">cancel
+                        </Button>
+                    }
                 </div>
+                
+                
             </form>
         </div>
     )

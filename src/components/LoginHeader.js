@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 
 import { Link, withRouter } from 'react-router-dom'
+import swal from 'sweetalert'
 import { removeStateNotes } from '../action/noteAction'
 
 import { isLogin } from '../action/userAction'
@@ -13,6 +14,7 @@ const LoginHeader = (props) => {
     const handleLogout = () => {
         localStorage.removeItem('token')
         props.history.push('/')
+        swal("Logout Successful!", "plz click the button!", "success")
         dispatch(isLogin(false))
         dispatch(removeStateNotes())
     }

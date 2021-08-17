@@ -1,24 +1,6 @@
 import axios from "axios"
-import { getNotes } from "./noteAction"
-
-export const postData = (formData,resetForm,redirectToLogin) => {
-    return (dispatch) => {
-        axios.post('http://dct-user-auth.herokuapp.com/users/register',formData)
-            .then( response => {
-                const data = response.data
-                if(data.errors){
-                    const errors = response.data.errors
-                    dispatch(registerError(errors))
-                }
-                else if( data.createdAt ){
-                    resetForm()
-                    redirectToLogin()
-                    dispatch(isRegister(true))
-                }
-            })
-            .catch( err => alert(err))
-    }
-}
+import { asyncGetNotes } from "./noteAction"
+import swal from "sweetalert"
 
 export const isRegister = (bool) => {
     return {
@@ -45,8 +27,9 @@ export const asynclogin = (formData,resetForm,redirectToHome) => {
                     localStorage.setItem('token',data.token)
                     resetForm()
                     dispatch(isLogin(true))
-                    dispatch(getNotes())
-                    dispatch(getAccount())
+                    dispatch(asyncGetNotes())
+                    dispatch(asyncgetAccount())
+                    swal("Login Successful!", "plz click the button!", "success")
                     redirectToHome()
                 }
             })
@@ -64,7 +47,7 @@ export const isLogin = (bool) => {
 }
 
 
-export const getAccount = () => {
+export const asyncgetAccount = () => {
     return (dispatch, getState) => {
         axios.get('http://dct-user-auth.herokuapp.com/users/account',
         {
