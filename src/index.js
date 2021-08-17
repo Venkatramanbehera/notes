@@ -5,6 +5,8 @@ import App from './App'
 import configureStore from './store/configureStore';
 
 import { Provider } from 'react-redux';
+import { getAccount, isLogin } from './action/userAction';
+import { getNotes } from './action/noteAction';
 
 const store = configureStore()
 console.log(store.getState());
@@ -12,6 +14,12 @@ console.log(store.getState());
 store.subscribe(() => {
     console.log(store.getState())
 })
+
+if(localStorage.getItem('token')){
+    store.dispatch(isLogin(true))
+    store.dispatch(getNotes())
+    store.dispatch(getAccount())
+}
 
 
 ReactDOM.render(

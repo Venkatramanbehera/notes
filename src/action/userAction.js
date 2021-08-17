@@ -34,7 +34,7 @@ export const registerError = (errors) => {
     }
 }
 
-export const login = (formData,resetForm,redirectToHome) => {
+export const asynclogin = (formData,resetForm,redirectToHome) => {
     return (dispatch) => {
         axios.post('http://dct-user-auth.herokuapp.com/users/login',formData)
             .then((response) => {

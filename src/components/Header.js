@@ -18,7 +18,7 @@ const Header = (props) => {
                 <h2>UserAuth</h2>
             </div>
             <div className="header__right">
-                <Link to="/">Home</Link>
+                <Link to="/" style={{ textDecoration:'none',fontSize:'25px'}}>Home</Link>
                 {
                     isLoginValue ? <LoginHeader/> : <LogoutHeader/>
                 }

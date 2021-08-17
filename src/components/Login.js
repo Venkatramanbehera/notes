@@ -4,7 +4,7 @@ import { TextField, ButtonGroup,Button } from '@material-ui/core'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { login } from '../action/userAction'
+import { asynclogin } from '../action/userAction'
 
 import '../css/Login.css'
 
@@ -37,7 +37,7 @@ const Login = (props) => {
             setPassword('')
             setEmail('')
         }
-        dispatch(login(formData,resetForm,redirectToHome))
+        dispatch(asynclogin(formData,resetForm,redirectToHome))
     }
 
     const handleCancel = () => {
