@@ -15,7 +15,7 @@ const Header = (props) => {
     return (
         <div className="header">
             <div className="header__left">
-                <h2>UserAuth</h2>
+                <h2>NotesApp</h2>
             </div>
             <div className="header__right">
                 <Link to="/" style={{ textDecoration:'none',fontSize:'25px',color:'black'}}>Home</Link>

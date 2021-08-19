@@ -6,6 +6,8 @@ import { asyncAddNotes, asyncUpdateNote } from '../action/noteAction'
 
 import '../css/AddNotes.css'
 
+const textAreaStyle = { width:'300px',marginBottom:'20px'}
+
 const AddNote = ({toggleEdit,title:editTitle, body:editBody, _id}) => {
 
     const dispatch = useDispatch()
@@ -42,7 +44,7 @@ const AddNote = ({toggleEdit,title:editTitle, body:editBody, _id}) => {
             <form onSubmit={ handleSubmit }>
                 <div className="form__title">
                     <TextField 
-                        style={{ width:'300px',marginBottom:'20px'}}
+                        style={textAreaStyle}
                         label="Title" 
                         variant="outlined" 
                         value={ title }
@@ -51,7 +53,7 @@ const AddNote = ({toggleEdit,title:editTitle, body:editBody, _id}) => {
                 </div>
                 <div className="form__textarea">
                     <TextareaAutosize
-                        style={{ width:'290px', marginBottom:'20px'}}
+                        style={textAreaStyle}
                         minRows={6}
                         placeholder="Body"
                         value={ body }
