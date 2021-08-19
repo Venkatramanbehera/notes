@@ -3,3 +3,21 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+ input{
+    width: 400px;
+    height: 30px;
+    margin: 20px 0;
+    border: none;
+    outline: none;
+    /* background-color: inherit; */
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+}
+
+.search__icon{
+    margin-top: 25px;
+}

@@ -7,6 +7,12 @@ import { removeStateNotes } from '../action/noteAction'
 
 import { isLogin } from '../action/userAction'
 
+const linkStyle = { 
+    textDecoration:'none',
+    fontSize:'25px',
+    color:'black'
+}
+
 const LoginHeader = (props) => {
 
     const dispatch = useDispatch()
@@ -20,9 +26,9 @@ const LoginHeader = (props) => {
     }
     return (
         <>
-            <Link to="/account" style={{ textDecoration:'none',fontSize:'25px'}}>Account</Link>
-            <Link to="/mynotes" style={{ textDecoration:'none',fontSize:'25px'}}>My Notes</Link>
-            <Link to="#" onClick={ handleLogout } style={{ textDecoration:'none',fontSize:'25px'}}>Logout</Link>
+            <Link to="/account" style={linkStyle}>Account</Link>
+            <Link to="/mynotes" style={linkStyle}>My Notes</Link>
+            <Link to="#" onClick={ handleLogout } style={linkStyle}>Logout</Link>
         </>
     )
 }

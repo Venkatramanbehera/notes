@@ -14,7 +14,6 @@ const MyNotes = (props) => {
     return (
         <div className="notes">
             <div className="left">
-                <h1>My Notes</h1>
                 {
                     notes.length ? <NotesContainer/> : <h1>No notes found add your first node</h1>
                 }
